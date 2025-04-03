@@ -27,3 +27,5 @@ curl -X GET http://localhost:9090/api
 ## Contributors
 
 - [Anuoluwapo Emmanuel](https://github.com/Anuolu-2020)
+- [Sherif Sani](https://github.com/sherifsani)
+
