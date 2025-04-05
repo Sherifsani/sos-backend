@@ -1,7 +1,8 @@
 # SOS Backend
 
 ## Overview
-The **SOS Backend** is the server-side implementation of the SOS application.
+The **SOS Backend** is the server-side implementation of the [SOS application](https://github.com/dev-xero/sos-client).
+ 
 
 ## Installation
 1. Clone the repository:
