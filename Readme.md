@@ -29,4 +29,5 @@ curl -X GET http://localhost:9090/api
 
 - [Anuoluwapo Emmanuel](https://github.com/Anuolu-2020)
 - [Sherif Sani](https://github.com/sherifsani)
+- [Emmanuel Felix](https://github.com/hemahnuhel)
 
