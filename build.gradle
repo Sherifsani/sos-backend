@@ -18,14 +18,31 @@ repositories {
 }
 
 dependencies {
-	//implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-	//implementation 'org.springframework.boot:spring-boot-starter-jdbc'
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	implementation 'org.springframework.boot:spring-boot-starter-jdbc'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
-	//runtimeOnly 'org.postgresql:postgresql'
+  implementation 'org.hibernate:hibernate-spatial:6.6.11.Final'
+  implementation 'org.geolatte:geolatte-geom'
+  implementation 'org.springframework.boot:spring-boot-starter-validation'
+	runtimeOnly 'org.postgresql:postgresql'
+  compileOnly 'org.projectlombok:lombok:1.18.38'
+  annotationProcessor 'org.projectlombok:lombok:1.18.38'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 }
 
 tasks.named('test') {
 	useJUnitPlatform()
+}
+
+
+bootRun {
+    def dotenvFile = file('.env')
+    if (dotenvFile.exists()) {
+        def props = new Properties()
+        dotenvFile.withReader { reader ->
+            props.load(reader)
+        }
+        environment props
+    }
 }
