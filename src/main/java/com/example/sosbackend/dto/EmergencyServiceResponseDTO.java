@@ -11,6 +11,7 @@ import lombok.Data;
 public class EmergencyServiceResponseDTO {
   private Long id;
   private String name;
+  private String location;
   private String type;
   private String callcode;
   private double longitude;
@@ -20,6 +21,7 @@ public class EmergencyServiceResponseDTO {
     EmergencyServiceResponseDTO dto = new EmergencyServiceResponseDTO();
     dto.setId(model.getId());
     dto.setName(model.getName());
+    dto.setLocation(model.getLocation());
     dto.setType(model.getType());
     dto.setCallcode(model.getCallcode());
     if (model.getCoordinates() != null) {
