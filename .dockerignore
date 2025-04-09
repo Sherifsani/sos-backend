@@ -12,3 +12,8 @@ build/
 Thumbs.db
 
 *.env
+
+.env*
+.flaskenv*
+!.env.project
+!.env.vault
