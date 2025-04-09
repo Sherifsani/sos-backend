@@ -13,6 +13,7 @@ import com.example.sosbackend.response.ApiResponse;
 
 import io.swagger.v3.oas.annotations.tags.Tag;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
 
 @Tag(name = "Emergency Services", description = "Apis for emergency services routes")
 public interface EmergencyServiceApi {
@@ -25,6 +26,7 @@ public interface EmergencyServiceApi {
   public ResponseEntity<ApiResponse<List<EmergencyServiceResponseDTO>>> findNearbyEmergencyServices(
       double longitude,
       double latitude,
+      @Parameter(description = "Search radius in meters", required = true)
       double radius,
       HttpServletRequest request) throws ResourceNotFoundException;
 }
