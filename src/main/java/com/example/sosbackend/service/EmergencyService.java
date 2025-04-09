@@ -34,6 +34,7 @@ public class EmergencyService {
       emergencyService.setName(request.getName());
       emergencyService.setType(request.getType());
       emergencyService.setCallcode(request.getCallcode());
+      emergencyService.setLocation(request.getLocation());
 
       // make the coordinate with the right coordinate reference system
       Point<G2D> coordinates = point(CoordinateReferenceSystems.WGS84,
@@ -48,6 +49,14 @@ public class EmergencyService {
     // finally save to the database
     return emergencyServiceRepository.saveAll(emergencyServices);
 
+  }
+
+  public List<EmergencyServicesModel> findNearbyEmergencyServices(double longitude, double latitude, double radius) {
+
+    return emergencyServiceRepository.findNearbyEmergencyServices(longitude,
+        latitude, radius);
+    // .orElseThrow(() -> new ResourceNotFoundException("No nearby emergency
+    // services found for this coordinate"));
   }
 
 }

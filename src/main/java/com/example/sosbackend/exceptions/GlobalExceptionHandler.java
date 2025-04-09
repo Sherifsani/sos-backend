@@ -13,9 +13,11 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
+import org.springframework.web.bind.MissingServletRequestParameterException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+import org.springframework.web.client.HttpClientErrorException.NotFound;
 
 import com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException;
 
@@ -26,7 +28,10 @@ import jakarta.validation.ConstraintViolationException;
 public class GlobalExceptionHandler {
 
   @ExceptionHandler({ MethodArgumentNotValidException.class, ConstraintViolationException.class,
-      UnrecognizedPropertyException.class, DataIntegrityViolationException.class })
+      UnrecognizedPropertyException.class, DataIntegrityViolationException.class, ResourceNotFoundException.class,
+      MissingServletRequestParameterException.class
+  })
+
   @ResponseStatus(HttpStatus.BAD_REQUEST)
   public ResponseEntity<Map<String, Object>> handleValidationExceptions(Exception ex, HttpServletRequest request) {
     Map<String, Object> body = new HashMap<>();
@@ -52,6 +57,10 @@ public class GlobalExceptionHandler {
       }
     } else if (ex instanceof DataIntegrityViolationException divEx) {
       errors.add(divEx.getMessage());
+    } else if (ex instanceof ResourceNotFoundException notfoundEx) {
+      errors.add(notfoundEx.getMessage());
+    } else if (ex instanceof MissingServletRequestParameterException missingRequestParamEx) {
+      errors.add(missingRequestParamEx.getMessage());
     }
 
     body.put("success", false);

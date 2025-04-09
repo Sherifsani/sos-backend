@@ -24,6 +24,8 @@ dependencies {
   implementation 'org.hibernate:hibernate-spatial:6.6.11.Final'
   implementation 'org.geolatte:geolatte-geom'
   implementation 'org.springframework.boot:spring-boot-starter-validation'
+  implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.8.6'
+  implementation 'io.swagger.core.v3:swagger-annotations:2.2.30'
 	runtimeOnly 'org.postgresql:postgresql'
   compileOnly 'org.projectlombok:lombok:1.18.38'
   annotationProcessor 'org.projectlombok:lombok:1.18.38'

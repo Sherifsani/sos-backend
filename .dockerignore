@@ -1,0 +1,14 @@
+# Build directories (Gradle)
+build/
+
+.project
+.classpath
+.settings/
+
+.git/
+.gitignore
+
+.DS_Store
+Thumbs.db
+
+*.env

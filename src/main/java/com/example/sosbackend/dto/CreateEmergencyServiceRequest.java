@@ -1,7 +1,5 @@
 package com.example.sosbackend.dto;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
 import jakarta.validation.constraints.DecimalMax;
 import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.NotEmpty;
@@ -24,6 +22,9 @@ public class CreateEmergencyServiceRequest {
   @Size(min = 3, max = 12, message = "The length of callcode cannot be less than 3 and more than 12 digits")
   private String callcode;
 
+  @NotEmpty(message = "location is required")
+  private String location;
+
   @NotNull(message = "Longitude is required")
   @DecimalMin(value = "-180.0", message = "Longitude must be greater than or equal to -180")
   @DecimalMax(value = "180.0", message = "Longitude must be less than or equal to 180")
@@ -34,53 +35,5 @@ public class CreateEmergencyServiceRequest {
   @DecimalMax(value = "90.0", message = "Latitude must be less than or equal to 90")
   private Double latitude;
 
-  // public CreateEmergencyServiceRequest toEmergencyServices() {
-  // return new CreateEmergencyServiceRequest()
-  // .setName(name)
-  // .setType(type)
-  // .setCallcode(callcode)
-  // .setLongitude(longitude)
-  // .setLatitude(latitude);
-  // }
-
-  // public void setName(String name) {
-  // this.name = name;
-  // }
-  //
-  // public String getName() {
-  // return this.name;
-  // }
-  //
-  // public void setType(String type) {
-  // this.type = type;
-  // }
-  //
-  // public String getType() {
-  // return this.type;
-  // }
-  //
-  // public void setCallcode(int callcode) {
-  // this.callcode = callcode;
-  // }
-  //
-  // public int getCallcode() {
-  // return this.callcode;
-  // }
-  //
-  // public void setLatitude(double latitude) {
-  // this.latitude = latitude;
-  // }
-  //
-  // public double getLatitude() {
-  // return this.latitude;
-  // }
-  //
-  // public void setLongitude(double longitude) {
-  // this.longitude = longitude;
-  // }
-  //
-  // public double getLongitude() {
-  // return this.longitude;
-  // }
 
 }
