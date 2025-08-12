@@ -25,6 +25,12 @@ Visit http://localhost:9090/api
 ```sh
 curl -X GET http://localhost:9090/api 
 ```
+API Endpoint
+-------------
+- `GET /api/emergencyServices` - Fetch nearby emergency service within a specified coordinate.
+  - Parameters: `longitude`, `latitude`, `radius`, `page`, `limit, type(policeStations or fireStations or hospitals)`.
+  - Example: `curl -X GET "http://localhost:9090/api/emergencyServices?longitude=3.3430&latitude=6.5530&radius=5000&page=1&limit=10"
+  
 ## Contributors
 
 - [Anuoluwapo Emmanuel](https://github.com/Anuolu-2020)
